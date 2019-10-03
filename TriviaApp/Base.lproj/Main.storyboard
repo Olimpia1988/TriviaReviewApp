@@ -20,7 +20,7 @@
                                 <rect key="frame" x="124" y="113" width="172" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="imageToSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qqu-2b-cHt"/>
+                                    <action selector="imageToSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lMv-A2-ujn"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1jZ-J5-OSG">
@@ -52,7 +52,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="ZPA-ds-Yrc" id="Vk9-W0-3qS"/>
                         <outlet property="nameTextField" destination="1jZ-J5-OSG" id="lDe-bZ-f63"/>
-                        <outlet property="profileImage" destination="OMZ-Xp-Z35" id="HRc-qH-QHu"/>
+                        <outlet property="profileImage" destination="OMZ-Xp-Z35" id="Ge6-0A-tyR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

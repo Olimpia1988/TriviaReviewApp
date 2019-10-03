@@ -30,9 +30,30 @@ class LoginViewController: UIViewController {
         getImageAccess()
         
         let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
+        imagePicker.sourceType = .photoLibrary
+      
         
-        
+        if photoAccessPermission {
+        present(imagePicker, animated: true)
+            
+            
+        } else {
+           let alertVC = UIAlertController(title: "No access", message: "Photo library requres access", preferredStyle: .alert)
+                       
+                       alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                           self.photoAccessPermission = true
+                           self.present(imagePicker, animated: true, completion: nil)
+                       }))
+                       
+                       alertVC.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (alertAction) in
+                           self.photoAccessPermission = false
+                       }))
+                       self.present(alertVC, animated: true, completion: nil)
+            
+        }
+    
     }
     
    
@@ -77,4 +98,6 @@ extension LoginViewController: UITextFieldDelegate {
     
 }
 
-
+extension LoginViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+}
