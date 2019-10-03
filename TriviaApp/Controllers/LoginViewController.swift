@@ -1,6 +1,9 @@
 import UIKit
+import Photos
 
 class LoginViewController: UIViewController {
+    
+    var photoAccessPermission = false
 
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,10 +28,29 @@ class LoginViewController: UIViewController {
     
     @IBAction func imageToSelect(_ sender: Any) {
         
+        
+        
+    }
+    
+    func getImageAccess() {
+        let photoLibrary = PHPhotoLibrary.authorizationStatus()
+        switch photoLibrary {
+        case .authorized:
+            self.photoAccessPermission = true
+        case .denied:
+            self.photoAccessPermission = false
+        case.notDetermined:
+             print("No access determined")
+        case .restricted:
+            print("you creep")
+            }
+        }
+        
+        
     }
     
 
-}
+
 
 extension LoginViewController: UITextFieldDelegate {
     

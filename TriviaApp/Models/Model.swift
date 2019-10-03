@@ -7,7 +7,7 @@ struct TriviaModel: Codable {
 
 struct TrivaQuestion: Codable {
     var category: String
-    var type: String
+    var type: String 
     var question: String
     var correctAnswer: String
     var incorrectAnser: [String]

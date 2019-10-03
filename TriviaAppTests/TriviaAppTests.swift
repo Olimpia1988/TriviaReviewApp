@@ -11,24 +11,34 @@ import XCTest
 
 class TriviaAppTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+ func testGetQuestions() {
+    
+    // Arrange
+     
+     let questionData = getSampleQuestionJSON()
+     
+     // Act
+     
+   let questions = TrivaQuestion.getQuestions(from: questionData)
+    
+    
+    //assert
+    XCTAssertTrue(questions.count == 10) 
+ }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+ func getSampleQuestionJSON() -> Data {
+           guard let pathToData = Bundle.main.path(forResource: "sampleQuestions", ofType: "json") else {
+               fatalError("sampleQuestions.json not found")
+           }
+           let internalUrl = URL(fileURLWithPath: pathToData)
+           do {
+               let data = try Data(contentsOf: internalUrl)
+               return data
+           }
+           catch {
+               fatalError("An error occurred: \(error)")
+           }
+       }
+   
 
 }
