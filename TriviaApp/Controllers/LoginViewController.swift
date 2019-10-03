@@ -27,10 +27,16 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func imageToSelect(_ sender: Any) {
+        getImageAccess()
+        
+        let imagePicker = UIImagePickerController()
         
         
         
     }
+    
+   
+    
     
     func getImageAccess() {
         let photoLibrary = PHPhotoLibrary.authorizationStatus()
@@ -39,7 +45,22 @@ class LoginViewController: UIViewController {
             self.photoAccessPermission = true
         case .denied:
             self.photoAccessPermission = false
+            let alert = UIAlertController(title: "No photo library access", message: "ha!", preferredStyle: .alert)
+                   alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                   self.present(alert, animated: true, completion: nil)
         case.notDetermined:
+            PHPhotoLibrary.requestAuthorization { (requestToChangeStatus) in
+                switch requestToChangeStatus{
+                case .authorized:
+                    self.photoAccessPermission = true
+                case .denied:
+                    self.photoAccessPermission = false
+                case .notDetermined:
+                    print("no permission given")
+                case .restricted:
+                    print("no permision given")
+                }
+            }
              print("No access determined")
         case .restricted:
             print("you creep")
@@ -55,3 +76,5 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     
 }
+
+
